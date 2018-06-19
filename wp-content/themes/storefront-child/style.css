@@ -1,0 +1,144 @@
+/*
+Theme Name: Storefront - Sweet World
+Template: storefront
+Description:  	Child theme de storefront para Sweet World
+Version:      	1.0
+License:      	GNU General Public License v2 or later
+License URI:  	http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain:  	storefront
+Tags:         	e-commerce, two-columns, left-sidebar, right-sidebar, custom-background, custom-colors, custom-header, custom-menu, featured-images, full-width-template, threaded-comments, accessibility-ready, rtl-language-support, footer-widgets, sticky-post, theme-options
+*/
+
+/*MENU*/
+body{
+    padding:0;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-weight: inherit;
+}
+a {
+	color: #007bff;
+}
+.margin-top{
+    margin-top: 1.5em
+}
+.woocommerce-input-wrapper{
+    width:100%
+}
+.woocommerce-active .site-header .site-branding {
+	width:auto;
+	margin-right: 4%;
+}
+.site-header{
+    padding: 0;
+}
+.navbar-dark.bg-dark .site-branding .site-title a {
+	font-weight: 700;
+	color: wheat;
+}
+.navbar-dark.bg-dark .site-branding .site-description {
+	margin-bottom: 0;
+	display: block;
+	color: white;
+}
+
+li {
+    list-style: none;
+}
+
+.product .product-button-wrap .add_to_cart_button,
+.product .product-button-wrap .button.product_type_external,
+ul.products li.product .product-button-wrap .button.product_type_simple,
+ul.products li.product .product-button-wrap .button.product_type_grouped,
+ul.products li.product .product-button-wrap .button.product_type_external,
+.shop-item .product-button-wrap .add_to_cart_button,
+.shop-item .product-button-wrap .button.product_type_external,
+.shop-item .product-button-wrap .button.product_type_grouped,
+.shop-item .product-button-wrap .button.product_type_variable,
+ul.products li.product .product-button-wrap .product_type_variable {
+    opacity: 0;
+    opacity: 1;
+    color: #aaa;
+}
+
+.site-header-cart .cart-contents .amount, .site-header-cart .cart-contents .count, .site-header-cart .cart-contents::after {
+	color: wheat;
+	margin-left: 7px;
+}
+.woocommerce-active .site-header .site-header-cart {
+	max-width: 21.7391304348%;
+	float: right;
+	margin-right: 0px;
+	margin-bottom: 0;
+	width: auto;
+	margin-left: 15px;
+}
+/*Single Product*/
+.single-product div.product .woocommerce-product-gallery {
+	width: 100%;
+	float: left;
+	margin-right: 5.8823529412%;
+	margin-bottom: 1em;
+}
+.text-muted {
+    color: #6c757d !important;
+    font-weight:100
+}
+.description > p{
+    margin: 0 0 0;
+}
+#reviews .commentlist li .comment_container .comment-text {
+	width: 100%;
+}
+#reviews .commentlist li {
+	margin-bottom: auto;
+	list-style: none;
+	clear: both;
+}
+
+.card {
+	margin-bottom: 2em;
+}
+.woocommerce{
+    width:100%
+}
+.star-rating span::before, .quantity .plus, .quantity .minus, p.stars a:hover::after, p.stars a::after, .star-rating span::before, #payment .payment_methods li input[type="radio"]:first-child:checked + label::before {
+	color: orange;
+}
+
+.single-product div.product .woocommerce-product-gallery img {
+	margin: 0;
+	border-bottom: 1px solid #ddd;
+}
+
+.woocommerce-active .site-header .site-search {
+	width: 15%;
+	float: right;
+	margin-right: 0px;
+	clear: none;
+	margin-left: 15px;
+	height: auto;
+	margin-bottom: 0;
+}
+
+li .onsale {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	background: #f88398;
+	color: white;
+	box-shadow: 0 1px 3px -1px black;
+	border: none;
+	font-size: 16px;
+}
+
+@media(min-width: 768){
+    .woocommerce-active .site-header .site-header-cart {
+        max-width: 21.7391304348%;
+        float: right;
+        margin-right: 0px;
+        margin-bottom: 0;
+        width: auto;
+        margin-left: 15px;
+    }
+}

@@ -1,0 +1,143 @@
+2018-06-17T20:03:09+00:00 CRITICAL Uncaught ArgumentCountError: Too few arguments to function get_category(), 0 passed in C:\xampp\htdocs\wordpress\wp-content\themes\sweetworld\sidebar.php on line 17 and at least 1 expected in C:\xampp\htdocs\wordpress\wp-includes\category.php:91
+Stack trace:
+#0 C:\xampp\htdocs\wordpress\wp-content\themes\sweetworld\sidebar.php(17): get_category()
+#1 C:\xampp\htdocs\wordpress\wp-includes\template.php(688): require_once('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\wordpress\wp-includes\template.php(647): load_template('C:\\xampp\\htdocs...', true)
+#3 C:\xampp\htdocs\wordpress\wp-includes\general-template.php(110): locate_template(Array, true)
+#4 C:\xampp\htdocs\wordpress\wp-content\themes\sweetworld\index.php(23): get_sidebar()
+#5 C:\xampp\htdocs\wordpress\wp-includes\template-loader.php(74): include('C:\\xampp\\htdocs...')
+#6 C:\xampp\htdocs\wordpress\wp-blog-header.php(19): require_once('C:\\xampp\\htdocs...')
+#7 C:\xampp\htdocs\wordpress\index.php(17): require('C:\\xampp\\htdocs...')
+#8 {main}
+  thrown
+
+2018-06-17T20:13:11+00:00 CRITICAL Uncaught Error: Cannot use object of type WP_Term as array in C:\xampp\htdocs\wordpress\wp-content\themes\sweetworld\functions.php:206
+Stack trace:
+#0 C:\xampp\htdocs\wordpress\wp-content\themes\sweetworld\sidebar.php(17): get_list_categories()
+#1 C:\xampp\htdocs\wordpress\wp-includes\template.php(688): require_once('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\wordpress\wp-includes\template.php(647): load_template('C:\\xampp\\htdocs...', true)
+#3 C:\xampp\htdocs\wordpress\wp-includes\general-template.php(110): locate_template(Array, true)
+#4 C:\xampp\htdocs\wordpress\wp-content\themes\sweetworld\index.php(23): get_sidebar()
+#5 C:\xampp\htdocs\wordpress\wp-includes\template-loader.php(74): include('C:\\xampp\\htdocs...')
+#6 C:\xampp\htdocs\wordpress\wp-blog-header.php(19): require_once('C:\\xampp\\htdocs...')
+#7 C:\xampp\htdocs\wordpress\index.php(17): require('C:\\xampp\\htdocs...')
+#8 {main}
+  thrown
+
+2018-06-17T20:14:01+00:00 CRITICAL Uncaught Error: Cannot use object of type WP_Term as array in C:\xampp\htdocs\wordpress\wp-content\themes\sweetworld\functions.php:206
+Stack trace:
+#0 C:\xampp\htdocs\wordpress\wp-content\themes\sweetworld\sidebar.php(17): get_list_categories()
+#1 C:\xampp\htdocs\wordpress\wp-includes\template.php(688): require_once('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\wordpress\wp-includes\template.php(647): load_template('C:\\xampp\\htdocs...', true)
+#3 C:\xampp\htdocs\wordpress\wp-includes\general-template.php(110): locate_template(Array, true)
+#4 C:\xampp\htdocs\wordpress\wp-content\themes\sweetworld\index.php(23): get_sidebar()
+#5 C:\xampp\htdocs\wordpress\wp-includes\template-loader.php(74): include('C:\\xampp\\htdocs...')
+#6 C:\xampp\htdocs\wordpress\wp-blog-header.php(19): require_once('C:\\xampp\\htdocs...')
+#7 C:\xampp\htdocs\wordpress\index.php(17): require('C:\\xampp\\htdocs...')
+#8 {main}
+  thrown
+
+2018-06-17T20:29:14+00:00 CRITICAL Uncaught Error: Cannot use object of type WP_Term as array in C:\xampp\htdocs\wordpress\wp-content\themes\sweetworld\functions.php:206
+Stack trace:
+#0 C:\xampp\htdocs\wordpress\wp-content\themes\sweetworld\sidebar.php(17): get_list_categories()
+#1 C:\xampp\htdocs\wordpress\wp-includes\template.php(688): require_once('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\wordpress\wp-includes\template.php(647): load_template('C:\\xampp\\htdocs...', true)
+#3 C:\xampp\htdocs\wordpress\wp-includes\general-template.php(110): locate_template(Array, true)
+#4 C:\xampp\htdocs\wordpress\wp-content\themes\sweetworld\index.php(23): get_sidebar()
+#5 C:\xampp\htdocs\wordpress\wp-includes\template-loader.php(74): include('C:\\xampp\\htdocs...')
+#6 C:\xampp\htdocs\wordpress\wp-blog-header.php(19): require_once('C:\\xampp\\htdocs...')
+#7 C:\xampp\htdocs\wordpress\index.php(17): require('C:\\xampp\\htdocs...')
+#8 {main}
+  thrown
+
+2018-06-17T20:29:45+00:00 CRITICAL Uncaught Error: Cannot use object of type WP_Term as array in C:\xampp\htdocs\wordpress\wp-content\themes\sweetworld\functions.php:206
+Stack trace:
+#0 C:\xampp\htdocs\wordpress\wp-content\themes\sweetworld\sidebar.php(17): get_list_categories()
+#1 C:\xampp\htdocs\wordpress\wp-includes\template.php(688): require_once('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\wordpress\wp-includes\template.php(647): load_template('C:\\xampp\\htdocs...', true)
+#3 C:\xampp\htdocs\wordpress\wp-includes\general-template.php(110): locate_template(Array, true)
+#4 C:\xampp\htdocs\wordpress\wp-content\themes\sweetworld\index.php(23): get_sidebar()
+#5 C:\xampp\htdocs\wordpress\wp-includes\template-loader.php(74): include('C:\\xampp\\htdocs...')
+#6 C:\xampp\htdocs\wordpress\wp-blog-header.php(19): require_once('C:\\xampp\\htdocs...')
+#7 C:\xampp\htdocs\wordpress\index.php(17): require('C:\\xampp\\htdocs...')
+#8 {main}
+  thrown
+
+2018-06-17T20:30:02+00:00 CRITICAL Uncaught Error: Cannot use object of type WP_Term as array in C:\xampp\htdocs\wordpress\wp-content\themes\sweetworld\functions.php:206
+Stack trace:
+#0 C:\xampp\htdocs\wordpress\wp-content\themes\sweetworld\sidebar.php(17): get_list_categories()
+#1 C:\xampp\htdocs\wordpress\wp-includes\template.php(688): require_once('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\wordpress\wp-includes\template.php(647): load_template('C:\\xampp\\htdocs...', true)
+#3 C:\xampp\htdocs\wordpress\wp-includes\general-template.php(110): locate_template(Array, true)
+#4 C:\xampp\htdocs\wordpress\wp-content\themes\sweetworld\index.php(23): get_sidebar()
+#5 C:\xampp\htdocs\wordpress\wp-includes\template-loader.php(74): include('C:\\xampp\\htdocs...')
+#6 C:\xampp\htdocs\wordpress\wp-blog-header.php(19): require_once('C:\\xampp\\htdocs...')
+#7 C:\xampp\htdocs\wordpress\index.php(17): require('C:\\xampp\\htdocs...')
+#8 {main}
+  thrown
+
+2018-06-17T20:30:14+00:00 CRITICAL Uncaught Error: Cannot use object of type WP_Term as array in C:\xampp\htdocs\wordpress\wp-content\themes\sweetworld\functions.php:206
+Stack trace:
+#0 C:\xampp\htdocs\wordpress\wp-content\themes\sweetworld\sidebar.php(17): get_list_categories()
+#1 C:\xampp\htdocs\wordpress\wp-includes\template.php(688): require_once('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\wordpress\wp-includes\template.php(647): load_template('C:\\xampp\\htdocs...', true)
+#3 C:\xampp\htdocs\wordpress\wp-includes\general-template.php(110): locate_template(Array, true)
+#4 C:\xampp\htdocs\wordpress\wp-content\themes\sweetworld\index.php(23): get_sidebar()
+#5 C:\xampp\htdocs\wordpress\wp-includes\template-loader.php(74): include('C:\\xampp\\htdocs...')
+#6 C:\xampp\htdocs\wordpress\wp-blog-header.php(19): require_once('C:\\xampp\\htdocs...')
+#7 C:\xampp\htdocs\wordpress\index.php(17): require('C:\\xampp\\htdocs...')
+#8 {main}
+  thrown
+
+2018-06-17T21:03:23+00:00 CRITICAL Uncaught ArgumentCountError: Too few arguments to function add_menuclass(), 1 passed in C:\xampp\htdocs\wordpress\wp-includes\class-wp-hook.php on line 286 and exactly 2 expected in C:\xampp\htdocs\wordpress\wp-content\themes\sweetworld\functions.php:190
+Stack trace:
+#0 C:\xampp\htdocs\wordpress\wp-includes\class-wp-hook.php(286): add_menuclass('')
+#1 C:\xampp\htdocs\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters('', Array)
+#2 C:\xampp\htdocs\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#3 C:\xampp\htdocs\wordpress\wp-content\themes\sweetworld\functions.php(197): do_action('wp_nav_menu')
+#4 C:\xampp\htdocs\wordpress\wp-settings.php(426): include('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\wordpress\wp-config.php(89): require_once('C:\\xampp\\htdocs...')
+#6 C:\xampp\htdocs\wordpress\wp-load.php(37): require_once('C:\\xampp\\htdocs...')
+#7 C:\xampp\htdocs\wordpress\wp-blog-header.php(13): require_once('C:\\xampp\\htdocs...')
+#8 C:\xampp\htdocs\wordpress\index.php(17): re
+
+2018-06-17T21:21:43+00:00 CRITICAL Uncaught Error: Call to undefined function apply_filter() in C:\xampp\htdocs\wordpress\wp-content\themes\sweetworld\functions.php:212
+Stack trace:
+#0 C:\xampp\htdocs\wordpress\wp-settings.php(426): include()
+#1 C:\xampp\htdocs\wordpress\wp-config.php(89): require_once('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\wordpress\wp-load.php(37): require_once('C:\\xampp\\htdocs...')
+#3 C:\xampp\htdocs\wordpress\wp-blog-header.php(13): require_once('C:\\xampp\\htdocs...')
+#4 C:\xampp\htdocs\wordpress\index.php(17): require('C:\\xampp\\htdocs...')
+#5 {main}
+  thrown
+
+2018-06-17T21:51:18+00:00 CRITICAL Uncaught Error: Call to undefined function do_filter() in C:\xampp\htdocs\wordpress\wp-content\themes\sweetworld\functions.php:216
+Stack trace:
+#0 C:\xampp\htdocs\wordpress\wp-settings.php(426): include()
+#1 C:\xampp\htdocs\wordpress\wp-config.php(89): require_once('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\wordpress\wp-load.php(37): require_once('C:\\xampp\\htdocs...')
+#3 C:\xampp\htdocs\wordpress\wp-blog-header.php(13): require_once('C:\\xampp\\htdocs...')
+#4 C:\xampp\htdocs\wordpress\index.php(17): require('C:\\xampp\\htdocs...')
+#5 {main}
+  thrown
+
+2018-06-17T21:51:31+00:00 CRITICAL Uncaught Error: Call to undefined function apply_filter() in C:\xampp\htdocs\wordpress\wp-content\themes\sweetworld\functions.php:216
+Stack trace:
+#0 C:\xampp\htdocs\wordpress\wp-settings.php(426): include()
+#1 C:\xampp\htdocs\wordpress\wp-config.php(89): require_once('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\wordpress\wp-load.php(37): require_once('C:\\xampp\\htdocs...')
+#3 C:\xampp\htdocs\wordpress\wp-blog-header.php(13): require_once('C:\\xampp\\htdocs...')
+#4 C:\xampp\htdocs\wordpress\index.php(17): require('C:\\xampp\\htdocs...')
+#5 {main}
+  thrown
+
+2018-06-17T21:52:13+00:00 CRITICAL Uncaught Error: Call to undefined function apply_filter() in C:\xampp\htdocs\wordpress\wp-content\themes\sweetworld\functions.php:216
+Stack trace:
+#0 C:\xampp\htdocs\wordpress\wp-settings.php(426): include()
+#1 C:\xampp\htdocs\wordpress\wp-config.php(89): require_once('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\wordpress\wp-load.php(37): require_once('C:\\xampp\\htdocs...')
+#3 C:\xampp\htdocs\wordpress\wp-blog-header.php(13): require_once('C:\\xampp\\htdocs...')
+#4 C:\xampp\htdocs\wordpress\index.php(17): require('C:\\xampp\\htdocs...')
+#5 {main}
+  thrown
+

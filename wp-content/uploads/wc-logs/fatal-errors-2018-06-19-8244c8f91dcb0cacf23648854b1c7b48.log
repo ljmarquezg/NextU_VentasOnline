@@ -1,0 +1,39 @@
+2018-06-19T09:51:22+00:00 CRITICAL Uncaught Error: Call to undefined function show_categories() in C:\xampp\htdocs\wordpress\wp-content\themes\storefront-child\sidebar.php:10
+Stack trace:
+#0 C:\xampp\htdocs\wordpress\wp-includes\template.php(688): require_once()
+#1 C:\xampp\htdocs\wordpress\wp-includes\template.php(647): load_template('C:\\xampp\\htdocs...', true)
+#2 C:\xampp\htdocs\wordpress\wp-includes\general-template.php(110): locate_template(Array, true)
+#3 C:\xampp\htdocs\wordpress\wp-content\themes\storefront\inc\storefront-template-functions.php(905): get_sidebar()
+#4 C:\xampp\htdocs\wordpress\wp-includes\class-wp-hook.php(286): storefront_get_sidebar('')
+#5 C:\xampp\htdocs\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters('', Array)
+#6 C:\xampp\htdocs\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#7 C:\xampp\htdocs\wordpress\wp-content\themes\storefront\page.php(37): do_action('storefront_side...')
+#8 C:\xampp\htdocs\wordpress\wp-includes\template-loader.php(74): include('C:\\xampp\\htdocs...')
+#9
+
+2018-06-19T09:52:31+00:00 CRITICAL Uncaught Error: Call to undefined function show_categories() in C:\xampp\htdocs\wordpress\wp-content\themes\storefront\sidebar.php:8
+Stack trace:
+#0 C:\xampp\htdocs\wordpress\wp-includes\template.php(688): require_once()
+#1 C:\xampp\htdocs\wordpress\wp-includes\template.php(647): load_template('C:\\xampp\\htdocs...', true)
+#2 C:\xampp\htdocs\wordpress\wp-includes\general-template.php(110): locate_template(Array, true)
+#3 C:\xampp\htdocs\wordpress\wp-content\themes\storefront\inc\storefront-template-functions.php(905): get_sidebar()
+#4 C:\xampp\htdocs\wordpress\wp-includes\class-wp-hook.php(286): storefront_get_sidebar('')
+#5 C:\xampp\htdocs\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters('', Array)
+#6 C:\xampp\htdocs\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#7 C:\xampp\htdocs\wordpress\wp-content\themes\storefront\page.php(37): do_action('storefront_side...')
+#8 C:\xampp\htdocs\wordpress\wp-includes\template-loader.php(74): include('C:\\xampp\\htdocs...')
+#9 C:\xam
+
+2018-06-19T13:28:13+00:00 CRITICAL Uncaught Error: Call to undefined function show_categories() in C:\xampp\htdocs\wordpress\wp-content\themes\storefront-child\sidebar.php:10
+Stack trace:
+#0 C:\xampp\htdocs\wordpress\wp-includes\template.php(688): require_once()
+#1 C:\xampp\htdocs\wordpress\wp-includes\template.php(647): load_template('C:\\xampp\\htdocs...', true)
+#2 C:\xampp\htdocs\wordpress\wp-includes\general-template.php(110): locate_template(Array, true)
+#3 C:\xampp\htdocs\wordpress\wp-content\themes\storefront\inc\storefront-template-functions.php(905): get_sidebar()
+#4 C:\xampp\htdocs\wordpress\wp-includes\class-wp-hook.php(286): storefront_get_sidebar('')
+#5 C:\xampp\htdocs\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters('', Array)
+#6 C:\xampp\htdocs\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#7 C:\xampp\htdocs\wordpress\wp-content\themes\storefront\page.php(37): do_action('storefront_side...')
+#8 C:\xampp\htdocs\wordpress\wp-includes\template-loader.php(74): include('C:\\xampp\\htdocs...')
+#9
+
