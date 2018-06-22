@@ -45,8 +45,13 @@ a {
 	color: white;
 }
 
-footer.bg-dark a{
+footer.bg-dark .footer-col a{
 	color: white !important
+}
+footer{
+	display: block;
+	float: left;
+	width: 100%;
 }
 
 li {
@@ -66,6 +71,11 @@ ul.products li.product .product-button-wrap .product_type_variable {
     opacity: 0;
     opacity: 1;
     color: #aaa;
+}
+.page-template-template-homepage.has-post-thumbnail .type-page.has-post-thumbnail .entry-content.loaded, .page-template-template-homepage.has-post-thumbnail .type-page.has-post-thumbnail .entry-title.loaded {
+	opacity: 1;
+	text-shadow: 0 2px 3px #000;
+	color: white;
 }
 
 .site-header-cart .cart-contents .amount, .site-header-cart .cart-contents .count, .site-header-cart .cart-contents::after {

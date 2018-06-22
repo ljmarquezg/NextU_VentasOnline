@@ -1,0 +1,36 @@
+2018-06-22T19:45:34+00:00 CRITICAL Uncaught Error: Call to undefined function get_stylesheet_url_uri() in C:\xampp\htdocs\wordpress\wp-content\themes\storefront-child\content-homepage.php:13
+Stack trace:
+#0 C:\xampp\htdocs\wordpress\wp-includes\template.php(690): require()
+#1 C:\xampp\htdocs\wordpress\wp-includes\template.php(647): load_template('C:\\xampp\\htdocs...', false)
+#2 C:\xampp\htdocs\wordpress\wp-includes\general-template.php(155): locate_template(Array, true, false)
+#3 C:\xampp\htdocs\wordpress\wp-content\themes\storefront\inc\storefront-template-functions.php(874): get_template_part('content', 'homepage')
+#4 C:\xampp\htdocs\wordpress\wp-includes\class-wp-hook.php(286): storefront_homepage_content('')
+#5 C:\xampp\htdocs\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters('', Array)
+#6 C:\xampp\htdocs\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#7 C:\xampp\htdocs\wordpress\wp-content\themes\storefront\template-homepage.php(32): do_action('homepage')
+#8 C:\xampp\htdocs\wordpress\wp-includes\templ
+
+2018-06-22T19:46:02+00:00 CRITICAL Uncaught Error: Call to undefined function get_stylesheet_url_uri() in C:\xampp\htdocs\wordpress\wp-content\themes\storefront-child\content-homepage.php:13
+Stack trace:
+#0 C:\xampp\htdocs\wordpress\wp-includes\template.php(690): require()
+#1 C:\xampp\htdocs\wordpress\wp-includes\template.php(647): load_template('C:\\xampp\\htdocs...', false)
+#2 C:\xampp\htdocs\wordpress\wp-includes\general-template.php(155): locate_template(Array, true, false)
+#3 C:\xampp\htdocs\wordpress\wp-content\themes\storefront\inc\storefront-template-functions.php(874): get_template_part('content', 'homepage')
+#4 C:\xampp\htdocs\wordpress\wp-includes\class-wp-hook.php(286): storefront_homepage_content('')
+#5 C:\xampp\htdocs\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters('', Array)
+#6 C:\xampp\htdocs\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#7 C:\xampp\htdocs\wordpress\wp-content\themes\storefront\template-homepage.php(32): do_action('homepage')
+#8 C:\xampp\htdocs\wordpress\wp-includes\templ
+
+2018-06-22T19:49:32+00:00 CRITICAL Uncaught Error: Call to undefined function get_stylesheet_url() in C:\xampp\htdocs\wordpress\wp-content\themes\storefront-child\content-homepage.php:13
+Stack trace:
+#0 C:\xampp\htdocs\wordpress\wp-includes\template.php(690): require()
+#1 C:\xampp\htdocs\wordpress\wp-includes\template.php(647): load_template('C:\\xampp\\htdocs...', false)
+#2 C:\xampp\htdocs\wordpress\wp-includes\general-template.php(155): locate_template(Array, true, false)
+#3 C:\xampp\htdocs\wordpress\wp-content\themes\storefront\inc\storefront-template-functions.php(874): get_template_part('content', 'homepage')
+#4 C:\xampp\htdocs\wordpress\wp-includes\class-wp-hook.php(286): storefront_homepage_content('')
+#5 C:\xampp\htdocs\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters('', Array)
+#6 C:\xampp\htdocs\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#7 C:\xampp\htdocs\wordpress\wp-content\themes\storefront\template-homepage.php(32): do_action('homepage')
+#8 C:\xampp\htdocs\wordpress\wp-includes\template-
+

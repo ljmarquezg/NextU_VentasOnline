@@ -289,6 +289,25 @@
             endfor;
         }
     }
+
+    if ( ! function_exists( 'storefront_homepage_header' ) ) {
+        /**
+         * Display the page header without the featured image
+         *
+         * @since 1.0.0
+         */
+        function storefront_homepage_header() {
+            edit_post_link( __( 'Edit this section', 'storefront' ), '', '', '', 'button storefront-hero__button-edit' );
+            ?>
+            <header class="entry-header">
+                <?php
+                the_title( '<h1 class="entry-title" style="color:white; text-shadow: 0px 2px 3px #000;">', '</h1>' );
+                ?>
+            </header><!-- .entry-header -->
+            <?php
+        }
+    }
+
     /*========================================================================
                 Activar plugins
     ========================================================================*/
@@ -313,4 +332,5 @@
     run_activate_plugin( 'woocommerce-gateway-stripe/woocommerce-gateway-stripe.php' );
     run_activate_plugin( 'woocommerce-services/woocommerce-services.php' );
     run_activate_plugin( 'wp-crm/wp-crm.php' );
+    
 ?>
