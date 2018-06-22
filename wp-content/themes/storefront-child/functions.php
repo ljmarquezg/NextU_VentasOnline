@@ -29,6 +29,7 @@
         remove_action( 'storefront_header', 'storefront_header_cart',                  60 );
         remove_action( 'storefront_header', 'storefront_primary_navigation_wrapper_close', 68 );
         remove_action( 'storefront_before_content','woocommerce_breadcrumb',10 );
+        remove_action( 'storefront_footer',         'storefront_credit'                 ,20);
 
         add_action( 'storefront_header', 'storefront_primary_navigation_wrapper',       42 );
         add_action( 'storefront_header', 'storefront_site_branding',                    45 );
@@ -245,7 +246,66 @@
         unset( $tabs['additional_information'] );  	// Remove the additional information tab
         return $tabs;
     }
-
     
 
+    /*========================================================================
+                Modificar footer
+    ========================================================================*/
+    if ( ! function_exists( 'storefront_footer_widgets' ) ) {
+
+        function storefront_footer_widgets() {
+            $rows    = intval( apply_filters( 'storefront_footer_widget_rows', 1 ) );
+            $regions = intval( apply_filters( 'storefront_footer_widget_columns', 4 ) );
+    
+            for ( $row = 1; $row <= $rows; $row++ ) :
+    
+                // Defines the number of active columns in this footer row.
+                for ( $region = $regions; 0 < $region; $region-- ) {
+                    if ( is_active_sidebar( 'footer-' . strval( $region + $regions * ( $row - 1 ) ) ) ) {
+                        $columns = $region;
+                        break;
+                    }
+                }
+    
+                if ( isset( $columns ) ) : ?>
+                    <div class=<?php echo '"footer-widgets row-' . strval( $row ) . ' block ' . ' fix"'; ?>><?php
+    
+                        for ( $column = 1; $column <= $columns; $column++ ) :
+                            $footer_n = $column + $regions * ( $row - 1 );
+    
+                            if ( is_active_sidebar( 'footer-' . strval( $footer_n ) ) ) : ?>
+    
+                                <div class="footer-col">
+                                    <?php dynamic_sidebar( 'footer-' . strval( $footer_n ) ); ?>
+                                </div><?php
+    
+                            endif;
+                        endfor; ?>
+    
+                    </div><!-- .footer-widgets.row-<?php echo strval( $row ); ?> --><?php
+    
+                    unset( $columns );
+                endif;
+            endfor;
+        }
+    }
+    /*========================================================================
+                Activar plugins
+    ========================================================================*/
+    function run_activate_plugin( $plugin ) {
+		$current = get_option( 'active_plugins' );
+		$plugin = plugin_basename( trim( $plugin ) );
+	
+		if ( !in_array( $plugin, $current ) ) {
+			$current[] = $plugin;
+			sort( $current );
+			do_action( 'activate_plugin', trim( $plugin ) );
+			update_option( 'active_plugins', $current );
+			do_action( 'activate_' . trim( $plugin ) );
+			do_action( 'activated_plugin', trim( $plugin) );
+		}
+		return null;
+	}
+    run_activate_plugin( 'woocommerce/woocommerce.php' );
+    run_activate_plugin( 'paypal-for-woocommerce/paypal-for-woocommerce.php' );
 ?>

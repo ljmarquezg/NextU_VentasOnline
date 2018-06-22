@@ -16,6 +16,9 @@ body{
 h1, h2, h3, h4, h5, h6 {
 	font-weight: inherit;
 }
+.flex{
+    display: flex
+}
 a {
 	color: #007bff;
 }
@@ -40,6 +43,10 @@ a {
 	margin-bottom: 0;
 	display: block;
 	color: white;
+}
+
+footer.bg-dark a{
+	color: white !important
 }
 
 li {
@@ -131,8 +138,13 @@ li .onsale {
 	border: none;
 	font-size: 16px;
 }
-
-@media(min-width: 768){
+.footer-col {
+	width: 100%;
+	float: left;
+	display: block;
+	padding: 0 20px;
+}
+@media(min-width: 768px){
     .woocommerce-active .site-header .site-header-cart {
         max-width: 21.7391304348%;
         float: right;
@@ -141,4 +153,9 @@ li .onsale {
         width: auto;
         margin-left: 15px;
     }
+
+	.footer-col {
+	width: 25%;
+	}
+
 }
