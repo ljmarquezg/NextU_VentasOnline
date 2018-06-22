@@ -308,4 +308,9 @@
 	}
     run_activate_plugin( 'woocommerce/woocommerce.php' );
     run_activate_plugin( 'paypal-for-woocommerce/paypal-for-woocommerce.php' );
+    run_activate_plugin( 'google-analytics-dashboard-for-wp/gadwp.php' );
+    run_activate_plugin( 'woocommerce-gateway-paypal-express-checkout/woocommerce-gateway-paypal-express-checkout.php' );
+    run_activate_plugin( 'woocommerce-gateway-stripe/woocommerce-gateway-stripe.php' );
+    run_activate_plugin( 'woocommerce-services/woocommerce-services.php' );
+    run_activate_plugin( 'wp-crm/wp-crm.php' );
 ?>

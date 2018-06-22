@@ -144,6 +144,15 @@ li .onsale {
 	display: block;
 	padding: 0 20px;
 }
+.card{
+	margin-top: 1.5em;
+}
+ul.wp_crm_contact_form, ul.wp_crm_contact_form ul, ul.wp_crm_contact_form li {
+	list-style: none;
+	list-style-type: none;
+	margin: 0;
+	padding: 5px;
+}
 @media(min-width: 768px){
     .woocommerce-active .site-header .site-header-cart {
         max-width: 21.7391304348%;

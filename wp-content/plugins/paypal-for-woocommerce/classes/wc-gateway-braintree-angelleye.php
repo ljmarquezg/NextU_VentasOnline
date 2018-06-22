@@ -1244,7 +1244,7 @@ class WC_Gateway_Braintree_AngellEYE extends WC_Payment_Gateway_CC {
     }
 
     public static function get_posted_variable($variable, $default = '') {
-        return ( isset($_POST[$variable]) ? $_POST[$variable] : $default );
+        return ( isset($_POST[$variable]) ? wc_clean($_POST[$variable]) : $default );
     }
 
     function get_transaction_url($order) {
@@ -1912,7 +1912,7 @@ class WC_Gateway_Braintree_AngellEYE extends WC_Payment_Gateway_CC {
 
     public function angelleye_update_settings($settings) {
         if (!empty($_POST['woocommerce_braintree_merchant_account_id'])) {
-            $settings['merchant_account_id'] = $_POST['woocommerce_braintree_merchant_account_id'];
+            $settings['merchant_account_id'] = wc_clean($_POST['woocommerce_braintree_merchant_account_id']);
         } else {
             $settings['merchant_account_id'] = '';
         }

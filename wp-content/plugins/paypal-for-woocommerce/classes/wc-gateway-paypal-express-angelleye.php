@@ -525,6 +525,11 @@ class WC_Gateway_PayPal_Express_AngellEYE extends WC_Payment_Gateway {
         $this->testmode = 'yes' === $this->get_option('testmode', 'yes');
         $this->paypal_marketing_solutions_cid_production = $this->get_option('paypal_marketing_solutions_cid_production', '');
         $this->form_fields = array(
+            'general'           => array(
+                'title'       => __( 'General', 'paypal-for-woocommerce' ),
+                'type'        => 'title',
+                'description' => '',
+            ),
             'enabled' => array(
                 'title' => __('Enable/Disable', 'paypal-for-woocommerce'),
                 'label' => __('Enable PayPal Express', 'paypal-for-woocommerce'),
@@ -545,6 +550,11 @@ class WC_Gateway_PayPal_Express_AngellEYE extends WC_Payment_Gateway {
                 'description' => __('This controls the description which the user sees during checkout.', 'paypal-for-woocommerce'),
                 'default' => __("Pay via PayPal; you can pay with your credit card if you don't have a PayPal account", 'paypal-for-woocommerce'),
                 'desc_tip' => true,
+            ),
+            'api_details'           => array(
+                'title'       => __( 'API Credentials', 'paypal-for-woocommerce' ),
+                'type'        => 'title',
+                'description' => '',
             ),
             'testmode' => array(
                 'title' => __('PayPal Sandbox', 'paypal-for-woocommerce'),
@@ -591,20 +601,10 @@ class WC_Gateway_PayPal_Express_AngellEYE extends WC_Payment_Gateway {
                 'default' => '',
                 'custom_attributes' => array( 'autocomplete' => 'off'),
             ),
-            'error_email_notify' => array(
-                'title' => __('Error Email Notifications', 'paypal-for-woocommerce'),
-                'type' => 'checkbox',
-                'label' => __('Enable admin email notifications for errors.', 'paypal-for-woocommerce'),
-                'default' => 'yes',
-                'description' => __('This will send a detailed error email to the WordPress site administrator if a PayPal API error occurs.', 'paypal-for-woocommerce'),
-                'desc_tip' => true
-            ),
-            'invoice_id_prefix' => array(
-                'title' => __('Invoice ID Prefix', 'paypal-for-woocommerce'),
-                'type' => 'text',
-                'description' => __('Add a prefix to the invoice ID sent to PayPal. This can resolve duplicate invoice problems when working with multiple websites on the same PayPal account.', 'paypal-for-woocommerce'),
-                'desc_tip' => true,
-                'default' => 'WC-EC'
+            'shopping_cart_checkout_page_display' => array(
+                'title'       => __( 'Shopping Cart, Checkout and Product Page Display', 'paypal-for-woocommerce' ),
+                'type'        => 'title',
+                'description' => '',
             ),
             'review_title_page' => array(
                 'title' => __('Order Review Page Title', 'paypal-for-woocommerce'),
@@ -683,6 +683,13 @@ class WC_Gateway_PayPal_Express_AngellEYE extends WC_Payment_Gateway {
                 'description' => __('Displaying the checkout button at the top of the checkout page will allow users to skip filling out the forms and can potentially increase conversion rates.'),
                 'desc_tip' => true,
             ),
+            'angelleye_skip_text' => array(
+                'title' => __('Express Checkout Message', 'paypal-for-woocommerce'),
+                'type' => 'text',
+                'description' => __('This message will be displayed next to the PayPal Express Checkout button at the top of the checkout page.'),
+                'default' => __('Skip the forms and pay faster with PayPal!', 'paypal-for-woocommerce'),
+                'desc_tip' => true,
+            ),
             'show_on_product_page' => array(
                 'title' => __('Product Page', 'paypal-for-woocommerce'),
                 'type' => 'checkbox',
@@ -691,6 +698,19 @@ class WC_Gateway_PayPal_Express_AngellEYE extends WC_Payment_Gateway {
                 'description' => sprintf(__('Allows customers to checkout using PayPal directly from a product page. Do not forget to enable Express Checkout on product details page.  You can use the <a href="%s" target="_blank">Bulk Update Tool</a> to Enable Express Checkout on multiple products at once.', 'paypal-for-woocommerce'), admin_url( 'options-general.php?page=paypal-for-woocommerce&tab=tabs' )),
                 'desc_tip' => false,
                 
+            ),
+            'show_paypal_credit' => array(
+                'title' => __('Enable PayPal Credit', 'paypal-for-woocommerce'),
+                'type' => 'checkbox',
+                'label' => __('Show the PayPal Credit button next to the Express Checkout button.', 'paypal-for-woocommerce'),
+                'default' => 'yes',
+                'description' => ($this->is_paypal_credit_enable == false) ? __('Currently disabled because PayPal Credit is only available for U.S.', 'paypal-for-woocommerce') : "",
+                'desc_tip' => ($this->is_paypal_credit_enable) ? true : false,
+            ),
+            'branding'           => array(
+                'title'       => __( 'Branding', 'paypal-for-woocommerce' ),
+                'type'        => 'title',
+                'description' => '',
             ),
             'paypal_account_optional' => array(
                 'title' => __('PayPal Account Optional', 'paypal-for-woocommerce'),
@@ -723,14 +743,7 @@ class WC_Gateway_PayPal_Express_AngellEYE extends WC_Payment_Gateway {
                 'default' => 'detailed',
                 'desc_tip' => true,
             ),
-            'show_paypal_credit' => array(
-                'title' => __('Enable PayPal Credit', 'paypal-for-woocommerce'),
-                'type' => 'checkbox',
-                'label' => __('Show the PayPal Credit button next to the Express Checkout button.', 'paypal-for-woocommerce'),
-                'default' => 'yes',
-                'description' => ($this->is_paypal_credit_enable == false) ? __('Currently disabled because PayPal Credit is only available for U.S.', 'paypal-for-woocommerce') : "",
-                'desc_tip' => ($this->is_paypal_credit_enable) ? true : false,
-            ),
+            
             'use_wp_locale_code' => array(
                 'title' => __('Use WordPress Locale Code', 'paypal-for-woocommerce'),
                 'type' => 'checkbox',
@@ -778,12 +791,93 @@ class WC_Gateway_PayPal_Express_AngellEYE extends WC_Payment_Gateway {
                 'default' => '',
                 'desc_tip' => true,
             ),
-            'angelleye_skip_text' => array(
-                'title' => __('Express Checkout Message', 'paypal-for-woocommerce'),
-                'type' => 'text',
-                'description' => __('This message will be displayed next to the PayPal Express Checkout button at the top of the checkout page.'),
-                'default' => __('Skip the forms and pay faster with PayPal!', 'paypal-for-woocommerce'),
+            'tokenization_subscriptions'           => array(
+                'title'       => __( 'Tokenization / Subscriptions', 'paypal-for-woocommerce' ),
+                'type'        => 'title',
+                'description' => '',
+            ),
+            'enable_tokenized_payments' => array(
+                'title' => __('Enable Tokenized Payments', 'paypal-for-woocommerce'),
+                'label' => __('Enable Tokenized Payments', 'paypal-for-woocommerce'),
+                'type' => 'checkbox',
+                'description' => __('Allow buyers to securely save payment details to their account for quick checkout / auto-ship orders in the future. (Currently considered BETA for Express Checkout.)', 'paypal-for-woocommerce'),
+                'default' => 'no',
+                'class' => 'enable_tokenized_payments'
+            ),
+            'fraud_management'           => array(
+                'title'       => __( 'Fraud Management', 'paypal-for-woocommerce' ),
+                'type'        => 'title',
+                'description' => '',
+            ),
+            'fraud_management_filters' => array(
+                'title' => __('Fraud Management Filters ', 'paypal-for-woocommerce'),
+                'label' => '',
+                'description' => __('Choose how you would like to handle orders when Fraud Management Filters are flagged.', 'paypal-for-woocommerce'),
+                'type' => 'select',
+                'class'    => 'wc-enhanced-select',
+                'options' => array(
+                    'ignore_warnings_and_proceed_as_usual' => __('Ignore warnings and proceed as usual.', 'paypal-for-woocommerce'),
+                    'place_order_on_hold_for_further_review' => __('Place order On Hold for further review.', 'paypal-for-woocommerce'),
+                ),
+                'default' => 'place_order_on_hold_for_further_review',
                 'desc_tip' => true,
+            ),
+            'email_notify_order_cancellations' => array(
+                'title' => __('Order canceled/refunded Email Notifications', 'paypal-for-woocommerce'),
+                'label' => __('Enable buyer email notifications for Order canceled/refunded', 'paypal-for-woocommerce'),
+                'type' => 'checkbox',
+                'description' => __('This will send buyer email notifications for Order canceled/refunded when Auto Cancel / Refund Orders option is selected.', 'paypal-for-woocommerce'),
+                'default' => 'no',
+                'class' => 'email_notify_order_cancellations',
+                'desc_tip' => true,
+            ),
+            'seller_protection'           => array(
+                'title'       => __( 'Seller Protection', 'paypal-for-woocommerce' ),
+                'type'        => 'title',
+                'description' => '',
+            ),
+            'order_cancellations' => array(
+                'title' => __('Auto Cancel / Refund Orders ', 'paypal-for-woocommerce'),
+                'label' => '',
+                'description' => __('Allows you to cancel and refund orders that do not meet PayPal\'s Seller Protection criteria.', 'paypal-for-woocommerce'),
+                'type' => 'select',
+                'class' => 'order_cancellations wc-enhanced-select',
+                'options' => array(
+                    'no_seller_protection' => __('Do *not* have PayPal Seller Protection', 'paypal-for-woocommerce'),
+                    'no_unauthorized_payment_protection' => __('Do *not* have PayPal Unauthorized Payment Protection', 'paypal-for-woocommerce'),
+                    'disabled' => __('Do not cancel any orders', 'paypal-for-woocommerce'),
+                ),
+                'default' => 'disabled',
+                'desc_tip' => true,
+            ),
+            'email_notify_order_cancellations' => array(
+                'title' => __('Order Cancelled / Refunded Email Notifications', 'paypal-for-woocommerce'),
+                'label' => __('Enable buyer email notifications for Order cancelled/refunded', 'paypal-for-woocommerce'),
+                'type' => 'checkbox',
+                'description' => __('This will send buyer email notifications for Order canceled/refunded when Auto Cancel / Refund Orders option is selected.', 'paypal-for-woocommerce'),
+                'default' => 'no',
+                'class' => 'email_notify_order_cancellations',
+                'desc_tip' => true,
+            ),
+            'advanced'              => array(
+		'title'       => __( 'Advanced Options', 'paypal-for-woocommerce' ),
+		'type'        => 'title',
+		'description' => '',
+            ),
+            'error_email_notify' => array(
+                'title' => __('Error Email Notifications', 'paypal-for-woocommerce'),
+                'type' => 'checkbox',
+                'label' => __('Enable admin email notifications for errors.', 'paypal-for-woocommerce'),
+                'default' => 'yes',
+                'description' => __('This will send a detailed error email to the WordPress site administrator if a PayPal API error occurs.', 'paypal-for-woocommerce'),
+                'desc_tip' => true
+            ),
+            'invoice_id_prefix' => array(
+                'title' => __('Invoice ID Prefix', 'paypal-for-woocommerce'),
+                'type' => 'text',
+                'description' => __('Add a prefix to the invoice ID sent to PayPal. This can resolve duplicate invoice problems when working with multiple websites on the same PayPal account.', 'paypal-for-woocommerce'),
+                'desc_tip' => true,
+                'default' => 'WC-EC'
             ),
             'skip_final_review' => array(
                 'title' => __('Skip Final Review', 'paypal-for-woocommerce'),
@@ -851,14 +945,6 @@ class WC_Gateway_PayPal_Express_AngellEYE extends WC_Payment_Gateway {
                 'default' => 'yes',
                 'desc_tip' => true,
             ),
-            'enable_tokenized_payments' => array(
-                'title' => __('Enable Tokenized Payments', 'paypal-for-woocommerce'),
-                'label' => __('Enable Tokenized Payments', 'paypal-for-woocommerce'),
-                'type' => 'checkbox',
-                'description' => __('Allow buyers to securely save payment details to their account for quick checkout / auto-ship orders in the future. (Currently considered BETA for Express Checkout.)', 'paypal-for-woocommerce'),
-                'default' => 'no',
-                'class' => 'enable_tokenized_payments'
-            ),
             'enable_notifyurl' => array(
                 'title' => __('Enable PayPal IPN', 'paypal-for-woocommerce'),
                 'label' => __('Configure an IPN URL to be included with Express Checkout payments.', 'paypal-for-woocommerce'),
@@ -884,42 +970,7 @@ class WC_Gateway_PayPal_Express_AngellEYE extends WC_Payment_Gateway {
                 'class' => '',
                 'desc_tip' => true,
             ),
-            'order_cancellations' => array(
-                'title' => __('Auto Cancel / Refund Orders ', 'paypal-for-woocommerce'),
-                'label' => '',
-                'description' => __('Allows you to cancel and refund orders that do not meet PayPal\'s Seller Protection criteria.', 'paypal-for-woocommerce'),
-                'type' => 'select',
-                'class' => 'order_cancellations wc-enhanced-select',
-                'options' => array(
-                    'no_seller_protection' => __('Do *not* have PayPal Seller Protection', 'paypal-for-woocommerce'),
-                    'no_unauthorized_payment_protection' => __('Do *not* have PayPal Unauthorized Payment Protection', 'paypal-for-woocommerce'),
-                    'disabled' => __('Do not cancel any orders', 'paypal-for-woocommerce'),
-                ),
-                'default' => 'disabled',
-                'desc_tip' => true,
-            ),
-            'fraud_management_filters' => array(
-                'title' => __('Fraud Management Filters ', 'paypal-for-woocommerce'),
-                'label' => '',
-                'description' => __('Choose how you would like to handle orders when Fraud Management Filters are flagged.', 'paypal-for-woocommerce'),
-                'type' => 'select',
-                'class'    => 'wc-enhanced-select',
-                'options' => array(
-                    'ignore_warnings_and_proceed_as_usual' => __('Ignore warnings and proceed as usual.', 'paypal-for-woocommerce'),
-                    'place_order_on_hold_for_further_review' => __('Place order On Hold for further review.', 'paypal-for-woocommerce'),
-                ),
-                'default' => 'place_order_on_hold_for_further_review',
-                'desc_tip' => true,
-            ),
-            'email_notify_order_cancellations' => array(
-                'title' => __('Order canceled/refunded Email Notifications', 'paypal-for-woocommerce'),
-                'label' => __('Enable buyer email notifications for Order canceled/refunded', 'paypal-for-woocommerce'),
-                'type' => 'checkbox',
-                'description' => __('This will send buyer email notifications for Order canceled/refunded when Auto Cancel / Refund Orders option is selected.', 'paypal-for-woocommerce'),
-                'default' => 'no',
-                'class' => 'email_notify_order_cancellations',
-                'desc_tip' => true,
-            ),
+            
             'save_abandoned_checkout' => array(
                 'title' => __('Save Abandoned Checkouts', 'paypal-for-woocommerce'),
                 'type' => 'checkbox',
@@ -945,12 +996,18 @@ class WC_Gateway_PayPal_Express_AngellEYE extends WC_Payment_Gateway {
                 'class' => '',
                 'description' => __('', 'paypal-for-woocommerce'),
             ),
+            'smart_buttons'           => array(
+                'title'       => __( 'Smart Payment Buttons', 'paypal-for-woocommerce' ),
+                'type'        => 'title',
+                'description' => '',
+            ),
             'enable_in_context_checkout_flow' => array(
                 'title' => __('Enable Smart Buttons', 'paypal-for-woocommerce'),
                 'type' => 'checkbox',
                 'label' => __('The enhanced PayPal Express Checkout with In-Context gives your customers a simplified checkout experience that keeps them at your website throughout the payment authorization process.', 'paypal-for-woocommerce'),
                 'default' => 'yes'
             ),
+            
             'button_styles' => array(
                 'title' => __('', 'paypal-for-woocommerce'),
                 'type' => 'title',
@@ -1181,7 +1238,7 @@ class WC_Gateway_PayPal_Express_AngellEYE extends WC_Payment_Gateway {
             require_once( PAYPAL_FOR_WOOCOMMERCE_PLUGIN_DIR . '/angelleye-includes/express-checkout/class-wc-gateway-paypal-express-request-angelleye.php' );
             $paypal_express_request = new WC_Gateway_PayPal_Express_Request_AngellEYE($this);
             $result = $paypal_express_request->DoReferenceTransaction($order_id);
-            if ($result['ACK'] == 'Success' || $result['ACK'] == 'SuccessWithWarning') {
+            if (!empty($result['ACK']) && $result['ACK'] == 'Success' || $result['ACK'] == 'SuccessWithWarning') {
                 $paypal_express_request->update_payment_status_by_paypal_responce($order_id, $result);
                 return array(
                     'result' => 'success',
@@ -1199,8 +1256,7 @@ class WC_Gateway_PayPal_Express_AngellEYE extends WC_Payment_Gateway {
         try {
             if (!empty($_POST['wc-paypal_express-payment-token']) && $_POST['wc-paypal_express-payment-token'] != 'new') {
                 $result = $this->angelleye_ex_doreference_transaction($order_id);
-                if ($result['ACK'] == 'Success' || $result['ACK'] == 'SuccessWithWarning') {
-                    $_POST = WC()->session->get( 'post_data' );
+                if (!empty($result['ACK']) && $result['ACK'] == 'Success' || $result['ACK'] == 'SuccessWithWarning') {
                     $order->payment_complete($result['TRANSACTIONID']);
                     $order->add_order_note(sprintf(__('%s payment approved! Transaction ID: %s', 'paypal-for-woocommerce'), $this->title, $result['TRANSACTIONID']));
                     WC()->cart->empty_cart();
@@ -1219,7 +1275,7 @@ class WC_Gateway_PayPal_Express_AngellEYE extends WC_Payment_Gateway {
                 } else {
                     if( empty($_POST['shipping_country'] ) ) {
                         $paypal_express_checkout = WC()->session->get( 'paypal_express_checkout' );
-                        $shipping_details = isset($paypal_express_checkout['shipping_details']) ? $paypal_express_checkout['shipping_details'] : array();
+                        $shipping_details = isset($paypal_express_checkout['shipping_details']) ? wp_unslash($paypal_express_checkout['shipping_details']) : array();
                         AngellEYE_Utility::angelleye_set_address($order_id, $shipping_details, 'shipping');
                     }
                 }
@@ -1227,7 +1283,7 @@ class WC_Gateway_PayPal_Express_AngellEYE extends WC_Payment_Gateway {
                 if ($this->billing_address && empty($post_data)) {
                     if( empty($_POST['billing_country'] ) ) {
                         $paypal_express_checkout = WC()->session->get( 'paypal_express_checkout' );
-                        $shipping_details = isset($paypal_express_checkout['shipping_details']) ? $paypal_express_checkout['shipping_details'] : array();
+                        $shipping_details = isset($paypal_express_checkout['shipping_details']) ? wp_unslash($paypal_express_checkout['shipping_details']) : array();
                         AngellEYE_Utility::angelleye_set_address($order_id, $shipping_details, 'billing');
                     }
                 }
@@ -1257,7 +1313,7 @@ class WC_Gateway_PayPal_Express_AngellEYE extends WC_Payment_Gateway {
                 if (isset($_POST['terms']) && wc_get_page_id('terms') > 0) {
                     WC()->session->set( 'paypal_express_terms', true );
                 }
-                WC()->session->set( 'post_data', $_POST);
+                WC()->session->set( 'post_data', wp_unslash($_POST));
                 $_GET['pp_action'] = 'set_express_checkout';
                 $this->handle_wc_api();
             }
@@ -1459,7 +1515,7 @@ class WC_Gateway_PayPal_Express_AngellEYE extends WC_Payment_Gateway {
                             AngellEYE_Utility::angelleye_set_address($order_id, $billing_address, 'billing');
                         }
                         $paypal_express_checkout = WC()->session->get( 'paypal_express_checkout' );
-                        $shipping_details = isset($paypal_express_checkout['shipping_details']) ? $paypal_express_checkout['shipping_details'] : array();
+                        $shipping_details = isset($paypal_express_checkout['shipping_details']) ? wp_unslash($paypal_express_checkout['shipping_details']) : array();
                         AngellEYE_Utility::angelleye_set_address($order_id, $shipping_details, 'shipping');
                         $order_id = version_compare(WC_VERSION, '3.0', '<') ? $order->id : $order->get_id();
                         if ($old_wc) {
@@ -1556,7 +1612,7 @@ class WC_Gateway_PayPal_Express_AngellEYE extends WC_Payment_Gateway {
             'Payments' => $Payments
         );
         $result = $this->paypal_express_checkout_token_request_handler($PayPalRequest, 'SetExpressCheckout');
-        if ($result['ACK'] == 'Success') {
+        if (!empty($result['ACK']) && $result['ACK'] == 'Success') {
             return array(
                 'result' => 'success',
                 'redirect' => $this->PAYPAL_URL . $result['TOKEN']
@@ -1594,13 +1650,9 @@ class WC_Gateway_PayPal_Express_AngellEYE extends WC_Payment_Gateway {
         }
         if (!empty($_GET['method_name']) && $_GET['method_name'] == 'paypal_express') {
             if ($_GET['action_name'] == 'SetExpressCheckout') {
-                $PayPalResult = $PayPal->GetExpressCheckoutDetails($_GET['token']);
+                $PayPalResult = $PayPal->GetExpressCheckoutDetails(wc_clean($_GET['token']));
                 if ($PayPalResult['ACK'] == 'Success') {
-                    $data = array(
-                        'METHOD' => 'CreateBillingAgreement',
-                        'TOKEN' => $_GET['token']
-                    );
-                    $billing_result = $PayPal->CreateBillingAgreement($_GET['token']);
+                    $billing_result = $PayPal->CreateBillingAgreement(wc_clean($_GET['token']));
                     if ($billing_result['ACK'] == 'Success') {
                         if (!empty($billing_result['BILLINGAGREEMENTID'])) {
                             $billing_agreement_id = $billing_result['BILLINGAGREEMENTID'];
@@ -1804,14 +1856,14 @@ class WC_Gateway_PayPal_Express_AngellEYE extends WC_Payment_Gateway {
                     $website_name = get_bloginfo('name');
                     $website_url = get_bloginfo('url');
                     $website_url = str_ireplace('www.', '', parse_url($website_url, PHP_URL_HOST));
-                    $post = '{"owner_id":"woocommerce_container","owner_type":"PAYPAL","application_context":{"terms_accepted":true,"bn_code":"AngellEYE_SP_WooCommerce_MS","partner_name":"' . $website_name . '"},"name":"woocommerce_container","description":"Container created from PayPal for WooCommerce plugin","url":"' . $website_url . '","published":true,"tags":[{"tag_definition_id":"credit","enabled":true,"configuration":[{"id":"analytics-id","value":"' . $_POST['woocommerce_paypal_express_api_username'] . '-1"},{"id":"variant","value":"slide-up"},{"id":"flow","value":"credit"},{"id":"mobile-flow","value":"credit"},{"id":"is-mobile-enabled","value":"true"},{"id":"is-desktop-enabled","value":"true"},{"id":"limit","value":"3"}]}, {"tag_definition_id": "analytics", "enabled": true, "configuration": [{"id": "analytics-id", "value": "' . $_POST['woocommerce_paypal_express_api_username'] . '-1"}]}]}';
+                    $post = '{"owner_id":"woocommerce_container","owner_type":"PAYPAL","application_context":{"terms_accepted":true,"bn_code":"AngellEYE_SP_WooCommerce_MS","partner_name":"' . $website_name . '"},"name":"woocommerce_container","description":"Container created from PayPal for WooCommerce plugin","url":"' . $website_url . '","published":true,"tags":[{"tag_definition_id":"credit","enabled":true,"configuration":[{"id":"analytics-id","value":"' . wc_clean($_POST['woocommerce_paypal_express_api_username']) . '-1"},{"id":"variant","value":"slide-up"},{"id":"flow","value":"credit"},{"id":"mobile-flow","value":"credit"},{"id":"is-mobile-enabled","value":"true"},{"id":"is-desktop-enabled","value":"true"},{"id":"limit","value":"3"}]}, {"tag_definition_id": "analytics", "enabled": true, "configuration": [{"id": "analytics-id", "value": "' . wc_clean($_POST['woocommerce_paypal_express_api_username']) . '-1"}]}]}';
                     $headers = array(
                         'Accept: application/json',
                         'Content-Type: application/json',
                         'Content-Length: ' . strlen($post),
-                        "x_nvp_pwd: " . $_POST['woocommerce_paypal_express_api_password'],
-                        "x_nvp_signature: " . $_POST['woocommerce_paypal_express_api_signature'],
-                        "x_nvp_user: " . $_POST['woocommerce_paypal_express_api_username']
+                        "x_nvp_pwd: " . wc_clean($_POST['woocommerce_paypal_express_api_password']),
+                        "x_nvp_signature: " . wc_clean($_POST['woocommerce_paypal_express_api_signature']),
+                        "x_nvp_user: " . wc_clean($_POST['woocommerce_paypal_express_api_username'])
                     );
                     $result_response = $this->angelleye_paypal_marketing_solutions_request($post, $headers);
                     if (!empty($result_response['response'])) {

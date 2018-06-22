@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: woocommerce, paypal, express checkout, payments pro, angelleye, payflow, dodirectpayment, braintree, payments advanced, rest, credit cards, credit card payments, payments, payment
 Requires at least: 3.8
 Tested up to: 4.9.6
-Stable tag: 1.4.9
+Stable tag: 1.4.11
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -126,6 +126,24 @@ Automatic updates should work great for you.  As always, though, we recommend ba
 * If you are unsure, you may need to [contact PayPal](https://www.paypal.com/us/webapps/helpcenter/helphub/home/) and request the information.  Just let them know you need to enable a Payments Pro plugin on your website, but you're unsure whether you should use Website Payments Pro 3.0(DoDirectPayment) or Payments Pro 2.0 (PayFlow).  They can confirm which one you need to use.
 
 == Changelog ==
+
+= 1.4.11 - 06.21.2018 =
+* Tweak - Further data sanitization and validation for privacy and security. ([PFW-156](https://github.com/angelleye/paypal-woocommerce/pull/1149))
+
+= 1.4.10 - 06.20.2018 =
+* Feature - Adds PayPal Payment Type and Transaction Fee to order meta data for Express Checkout orders. ([PFW-74](https://github.com/angelleye/paypal-woocommerce/pull/1146))
+* Feature - Adds ability to specify one or more email addresses to use for PayPal API error notifications. ([PFW-19](https://github.com/angelleye/paypal-woocommerce/pull/1138))
+* Tweak - Hides admin notices from non-admin user roles. ([PFW-7](https://github.com/angelleye/paypal-woocommerce/pull/1136))
+* Tweak - Adds billing phone number to PayFlow requests. ([PFW-2](https://github.com/angelleye/paypal-woocommerce/pull/1145/))
+* Tweak - Adds an admin notice to inform users when the PHP version on the server does not support plugin functionality. ([PFW-40](https://github.com/angelleye/paypal-woocommerce/pull/1135))
+* Tweak - Adds environment label (sandbox or production) to API logs. ([PFW-48](https://github.com/angelleye/paypal-woocommerce/pull/1140))
+* Tweak - Adds email address to Express Checkout requests when available. ([PFW-55](https://github.com/angelleye/paypal-woocommerce/pull/1133))
+* Tweak - Organizes Express Checkout settings panel. ([PFW-33](https://github.com/angelleye/paypal-woocommerce/pull/1144))
+* Tweak - Adds data sanitize functions where necessary. ([PFW-151](https://github.com/angelleye/paypal-woocommerce/pull/1148))
+* Tweak - Adjustments to avoid errors when item calculations from Woo are not accurate. ([PFW-46](https://github.com/angelleye/paypal-woocommerce/pull/1147))
+* Fix - Resolves issues with some account creation options during checkout with Express Checkout. ([PFW-21](https://github.com/angelleye/paypal-woocommerce/pull/1137))
+* Fix - Resolves an issue where the shipping address was sometimes not updated in the WooCommerce order. ([PFW-57](https://github.com/angelleye/paypal-woocommerce/pull/1139))
+* Fix - Resolves a problem in some mobile browsers where the last name field was getting hidden during checkout. ([PFW-126](https://github.com/angelleye/paypal-woocommerce/pull/1141))
 
 = 1.4.9 - 05.23.2018 =
 * Compatibility - Check for compatibility with WooCommerce 3.4. ([#1126](https://github.com/angelleye/paypal-woocommerce/issues/1126))

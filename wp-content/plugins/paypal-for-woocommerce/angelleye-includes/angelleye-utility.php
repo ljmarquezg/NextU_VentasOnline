@@ -136,6 +136,11 @@ class AngellEYE_Utility {
 
         add_action('woocommerce_process_shop_order_meta', array($this, 'save'), 50, 2);
         add_action('woocommerce_admin_order_data_after_shipping_address', array($this, 'angelleye_paypal_for_woocommerce_billing_agreement_details'), 10, 1);
+        add_filter('woocommerce_paypal_express_checkout_request_body', array($this, 'angelleye_paypal_express_checkout_request_body'), 999, 1);
+        add_filter('wc_braintree_transaction_data', array($this, 'angelleye_braintree_transaction_data'), 999, 1);
+        add_filter('woocommerce-gateway-paypal-pro_request', array($this, 'angelleye_gateway_paypal_pro_request'), 999, 1);
+        add_filter('woocommerce_gateway_paypal_pro_payflow_post_data', array($this, 'angelleye_gateway_paypal_pro_payflow_post_data'), 999, 1);
+        
     }
 
     public function angelleye_woocommerce_order_actions($order_actions = array()) {
@@ -388,7 +393,7 @@ class AngellEYE_Utility {
         $this->ec_add_log('DoCapture API call');
         $order_id = version_compare(WC_VERSION, '3.0', '<') ? $order->id : $order->get_id();
         if( !empty($_POST['_regular_price'])) {
-            $AMT = self::number_format($_POST['_regular_price']);
+            $AMT = self::number_format(wc_clean( wp_unslash( $_POST['_regular_price'] ) ) );
         } elseif ($capture_total == null) {
             $AMT = $this->get_amount_by_transaction_id($transaction_id);
         } else {
@@ -489,7 +494,7 @@ class AngellEYE_Utility {
         $this->ec_add_log('DoVoid API call');
         $order_id = version_compare(WC_VERSION, '3.0', '<') ? $order->id : $order->get_id();
         if (isset($_POST['angelleye_paypal_dovoid_transaction_dropdown']) && !empty($_POST['angelleye_paypal_dovoid_transaction_dropdown'])) {
-            $transaction_id = $_POST['angelleye_paypal_dovoid_transaction_dropdown'];
+            $transaction_id = wc_clean($_POST['angelleye_paypal_dovoid_transaction_dropdown']);
         } else {
             $old_wc = version_compare(WC_VERSION, '3.0', '<');
             $transaction_id = $old_wc ? get_post_meta($order_id, '_first_transaction_id', true) : get_post_meta($order->get_id(), '_first_transaction_id', true);
@@ -556,7 +561,7 @@ class AngellEYE_Utility {
         $this->ec_add_log('DoReauthorization API call');
         $order_id = version_compare(WC_VERSION, '3.0', '<') ? $order->id : $order->get_id();
         if (isset($_POST['angelleye_paypal_doreauthorization_transaction_dropdown']) && !empty($_POST['angelleye_paypal_doreauthorization_transaction_dropdown'])) {
-            $transaction_id = $_POST['angelleye_paypal_doreauthorization_transaction_dropdown'];
+            $transaction_id = wc_clean($_POST['angelleye_paypal_doreauthorization_transaction_dropdown']);
         } else {
             $old_wc = version_compare(WC_VERSION, '3.0', '<');
             $transaction_id = $old_wc ? get_post_meta($order_id, '_first_transaction_id', true) : get_post_meta($order->get_id(), '_first_transaction_id', true);
@@ -649,7 +654,7 @@ class AngellEYE_Utility {
         if (isset($transaction_id) && !empty($transaction_id)) {
             $DRFields = array(
                 'TRANSACTIONID' => $transaction_id, // Required. The value of a previously authorized transaction ID returned by PayPal.
-                'AMT' => self::number_format($_POST['_regular_price']), // Required. Must have two decimal places.  Decimal separator must be a period (.) and optional thousands separator must be a comma (,)
+                'AMT' => self::number_format(wc_clean( wp_unslash( $_POST['_regular_price']))), // Required. Must have two decimal places.  Decimal separator must be a period (.) and optional thousands separator must be a comma (,)
                 'CURRENCYCODE' => version_compare(WC_VERSION, '3.0', '<') ? $order->get_order_currency() : $order->get_currency()
             );
             $PayPalRequestData = array('DAFields' => $DRFields);
@@ -1700,7 +1705,7 @@ class AngellEYE_Utility {
         $order_id = version_compare(WC_VERSION, '3.0', '<') ? $order->id : $order->get_id();
 
         if( !empty($_POST['_regular_price'])) {
-            $AMT = self::number_format($_POST['_regular_price']);
+            $AMT = self::number_format(wc_clean( wp_unslash( $_POST['_regular_price'])));
         } elseif ($capture_total == null) {
             $AMT = $this->get_amount_by_transaction_id($transaction_id);
         } else {
@@ -1752,7 +1757,7 @@ class AngellEYE_Utility {
         $this->ec_add_log('DoVoid API call');
         $order_id = version_compare(WC_VERSION, '3.0', '<') ? $order->id : $order->get_id();
         if (isset($_POST['angelleye_paypal_dovoid_transaction_dropdown']) && !empty($_POST['angelleye_paypal_dovoid_transaction_dropdown'])) {
-            $transaction_id = $_POST['angelleye_paypal_dovoid_transaction_dropdown'];
+            $transaction_id = wc_clean($_POST['angelleye_paypal_dovoid_transaction_dropdown']);
         } else {
             $old_wc = version_compare(WC_VERSION, '3.0', '<');
             $transaction_id = $old_wc ? get_post_meta($order_id, '_first_transaction_id', true) : get_post_meta($order->get_id(), '_first_transaction_id', true);
@@ -2043,5 +2048,33 @@ class AngellEYE_Utility {
                 }
             } 
             return $locale;
+        }
+        
+        public function angelleye_paypal_express_checkout_request_body($param) {
+            if( !empty($param['BUTTONSOURCE'] ) ) {
+                $param['BUTTONSOURCE'] = 'AngellEYE_SP_WooCommerce';
+            }
+            return $param;
+        }
+        
+        public function angelleye_braintree_transaction_data($param){
+            if( !empty($param['channel'] ) ) {
+                $param['channel'] = 'AngellEYEPayPalforWoo_BT';
+            }
+            return $param;
+        }
+        
+        public function angelleye_gateway_paypal_pro_request($param) {
+            if( !empty($param['BUTTONSOURCE'] ) ) {
+               $param['BUTTONSOURCE'] = 'AngellEYE_SP_WooCommerce'; 
+            }
+            return $param;
+        }
+        
+        public function angelleye_gateway_paypal_pro_payflow_post_data($param) {
+            if( !empty($param['BUTTONSOURCE'] ) ) {
+                $param['BUTTONSOURCE'] = 'AngellEYE_SP_WooCommerce';
+            }
+            return $param;
         }
 }
