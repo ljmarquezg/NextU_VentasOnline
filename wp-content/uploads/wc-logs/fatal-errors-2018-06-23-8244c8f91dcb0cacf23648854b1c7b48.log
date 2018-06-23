@@ -1,0 +1,27 @@
+2018-06-23T07:16:32+00:00 CRITICAL Uncaught Error: Call to undefined function storefront_is_woocommerce_activated() in C:\xampp\htdocs\wordpress\wp-content\themes\storefront-child\functions.php:421
+Stack trace:
+#0 C:\xampp\htdocs\wordpress\wp-settings.php(424): include()
+#1 C:\xampp\htdocs\wordpress\wp-config.php(89): require_once('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\wordpress\wp-load.php(37): require_once('C:\\xampp\\htdocs...')
+#3 C:\xampp\htdocs\wordpress\wp-admin\admin-ajax.php(22): require_once('C:\\xampp\\htdocs...')
+#4 {main}
+  thrown
+
+2018-06-23T07:18:35+00:00 CRITICAL Uncaught Error: Call to undefined function storefront_is_woocommerce_activated() in C:\xampp\htdocs\wordpress\wp-content\themes\storefront-child\functions.php:421
+Stack trace:
+#0 C:\xampp\htdocs\wordpress\wp-settings.php(424): include()
+#1 C:\xampp\htdocs\wordpress\wp-config.php(89): require_once('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\wordpress\wp-load.php(37): require_once('C:\\xampp\\htdocs...')
+#3 C:\xampp\htdocs\wordpress\wp-admin\admin-ajax.php(22): require_once('C:\\xampp\\htdocs...')
+#4 {main}
+  thrown
+
+2018-06-23T07:20:33+00:00 CRITICAL Uncaught Error: Call to undefined function storefront_is_woocommerce_activated() in C:\xampp\htdocs\wordpress\wp-content\themes\storefront-child\functions.php:421
+Stack trace:
+#0 C:\xampp\htdocs\wordpress\wp-settings.php(424): include()
+#1 C:\xampp\htdocs\wordpress\wp-config.php(89): require_once('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\wordpress\wp-load.php(37): require_once('C:\\xampp\\htdocs...')
+#3 C:\xampp\htdocs\wordpress\wp-admin\admin-ajax.php(22): require_once('C:\\xampp\\htdocs...')
+#4 {main}
+  thrown
+

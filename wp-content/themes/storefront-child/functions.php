@@ -285,7 +285,15 @@
                     </div><!-- .footer-widgets.row-<?php echo strval( $row ); ?> --><?php
     
                     unset( $columns );
+                    else:
+                echo '<div class="col-full">
+                        <div class="container text-center" style="margin: 25px auto">
+                            Sitio creado para el curso NextU - Ventas Online
+                        </div>
+                    </div>';
+
                 endif;
+            
             endfor;
         }
     }
@@ -307,7 +315,15 @@
             <?php
         }
     }
-
+    /*=======================================================================
+                Storefront default design
+    =======================================================================*/
+    $homepage = get_page_by_title( 'Bienvenida' );
+    if ( $homepage )
+    {
+        update_option( 'page_on_front', $homepage->ID );
+        update_option( 'show_on_front', 'page' );
+    }
     /*========================================================================
                 Activar plugins
     ========================================================================*/
@@ -332,5 +348,4 @@
     run_activate_plugin( 'woocommerce-gateway-stripe/woocommerce-gateway-stripe.php' );
     run_activate_plugin( 'woocommerce-services/woocommerce-services.php' );
     run_activate_plugin( 'wp-crm/wp-crm.php' );
-    
 ?>
